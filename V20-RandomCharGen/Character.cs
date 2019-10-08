@@ -67,17 +67,17 @@ namespace V20_RandomCharGen
 
                     int r1 = rand.Next(0, ab.maximum); 
                     r1 = Limit(r1, 0, curPoints);
-                    ab.Attribute1Val += r1;             
+                    ab.Attribute1Val = r1 + Limit(ab.Attribute1Val, 0, ab.maximum);
                     curPoints -= r1;
 
                     int r2 = rand.Next(0, ab.maximum);
                     r2 = Limit(r2, 0, curPoints);
-                    ab.Attribute2Val += r2;
+                    ab.Attribute2Val = r2+ Limit(ab.Attribute2Val, 0, ab.maximum); ;
                     curPoints -= r2;
                     
                     int r3 = rand.Next(0, ab.maximum);
                     r3 = Limit(r3, 0, curPoints);
-                    ab.Attribute3Val += r3;
+                    ab.Attribute3Val = r3+ Limit(ab.Attribute3Val, 0, ab.maximum);
                     curPoints -= r3;
                     flag = (curPoints <= 0);
 

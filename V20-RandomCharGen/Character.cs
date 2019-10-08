@@ -6,15 +6,6 @@ using System.Threading.Tasks;
 
 namespace V20_RandomCharGen
 {
-    //struct Ability
-    //{
-    //    public int maxGen;
-    //    public string name;
-
-
-    //}
-
-
 
     class Character
     {
@@ -31,7 +22,6 @@ namespace V20_RandomCharGen
         Ability mental = new Ability();
         List<int> abilityValuesArray = new List<int>(new int[] { 7, 5, 3 });
         List<Ability> abilitiesArray = new List<Ability>();
-        List<Ability> doneAbilitiesArray = new List<Ability>();
         readonly List<Ability> list = new List<Ability>();
         private readonly Random rand = new Random();
 
@@ -92,9 +82,12 @@ namespace V20_RandomCharGen
                     flag = (curPoints <= 0);
 
                 }
+                ab.Attribute1Val++;
+                ab.Attribute2Val++;
+                ab.Attribute3Val++;
 
 
-                
+
             }
 
 

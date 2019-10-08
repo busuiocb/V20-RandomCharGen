@@ -9,7 +9,7 @@ namespace V20_RandomCharGen
 
     class Character
     {
-        class AbilityGroup
+        public class AttributeGroup
         {
             public int maximum;
             public int currentPoints;
@@ -17,83 +17,86 @@ namespace V20_RandomCharGen
             public int Attribute2Val;
             public int Attribute3Val;
         }
-        readonly AbilityGroup physical = new AbilityGroup();
-        readonly AbilityGroup social = new AbilityGroup();
-        readonly AbilityGroup mental = new AbilityGroup();
-        readonly List<int> abilityGroupValuesArray = new List<int>(new int[] { 7, 5, 3 });
-        readonly List<AbilityGroup> abilityGroupArray = new List<AbilityGroup>();
-        readonly List<AbilityGroup> list = new List<AbilityGroup>();
+        readonly AttributeGroup physical = new AttributeGroup();
+        readonly AttributeGroup social = new AttributeGroup();
+        readonly AttributeGroup mental = new AttributeGroup();
+        readonly List<int> AttributeGroupValuesArray = new List<int>(new int[] { 7, 5, 3 });
+        readonly List<AttributeGroup> AttributeGroupArray = new List<AttributeGroup>();
+        readonly List<AttributeGroup> list = new List<AttributeGroup>();
         private readonly Random rand = new Random();
 
         public Character()
         {
-            abilityGroupArray.Add(physical);
-            abilityGroupArray.Add(social);
-            abilityGroupArray.Add(mental);
-            GenerateAbilities();
+            AttributeGroupArray.Add(physical);
+            AttributeGroupArray.Add(social);
+            AttributeGroupArray.Add(mental);
+            
         }
 
 
-
+        //Method to limit values
         public static int Limit(int value, int min, int max)
         {
             if (value > max) { value = max; }
             if (value < min) { value = min; }
             return value;
         }
-        private void GenerateAbilities()
+
+        //Generate random attributes
+        public List<AttributeGroup> GenerateAttributes()
         {
 
-
+            //Assign priority order to each attribute group
             for (int i = 0; i < 3; i++)
             {
-                int index = rand.Next(0, abilityGroupValuesArray.Count);
-                int index1 = rand.Next(0, abilityGroupArray.Count);
-                abilityGroupArray[index1].currentPoints = abilityGroupValuesArray[index];
-                abilityGroupArray[index1].maximum = 5;
-                list.Add(abilityGroupArray[index1]);
-                abilityGroupArray.RemoveAt(index1);
-                abilityGroupValuesArray.RemoveAt(index);
+                int index = rand.Next(0, AttributeGroupValuesArray.Count);
+                int index1 = rand.Next(0, AttributeGroupArray.Count);
+                AttributeGroupArray[index1].currentPoints = AttributeGroupValuesArray[index];
+                AttributeGroupArray[index1].maximum = 4;
+                list.Add(AttributeGroupArray[index1]);
+                AttributeGroupArray.RemoveAt(index1);
+                AttributeGroupValuesArray.RemoveAt(index);
 
             }
 
-            foreach (AbilityGroup ab in list) 
+            //Generate a random value for each attribute based on the priority assigned previously
+            foreach (AttributeGroup att in list) 
             {
                 bool flag = false;
-                int curPoints = ab.currentPoints;
+                int curPoints = att.currentPoints;
  
                 while (!flag)
                 {
 
-                    int r1 = rand.Next(0, ab.maximum); 
+                    int r1 = rand.Next(0, att.maximum); 
                     r1 = Limit(r1, 0, curPoints);
-                    ab.Attribute1Val = r1 + Limit(ab.Attribute1Val, 0, ab.maximum);
+                    att.Attribute1Val =  Limit(r1 + att.Attribute1Val, 0, att.maximum);
                     curPoints -= r1;
 
-                    int r2 = rand.Next(0, ab.maximum);
+                    int r2 = rand.Next(0, att.maximum);
                     r2 = Limit(r2, 0, curPoints);
-                    ab.Attribute2Val = r2+ Limit(ab.Attribute2Val, 0, ab.maximum); ;
+                    att.Attribute2Val = Limit(r2 + att.Attribute2Val, 0, att.maximum); ;
                     curPoints -= r2;
                     
-                    int r3 = rand.Next(0, ab.maximum);
+                    int r3 = rand.Next(0, att.maximum);
                     r3 = Limit(r3, 0, curPoints);
-                    ab.Attribute3Val = r3+ Limit(ab.Attribute3Val, 0, ab.maximum);
+                    att.Attribute3Val = Limit(r3 + att.Attribute3Val, 0, att.maximum);
                     curPoints -= r3;
                     flag = (curPoints <= 0);
 
 
 
                 }
-
-                ab.Attribute1Val++;
-                ab.Attribute2Val++;
-                ab.Attribute3Val++;
+                //Each attribute starts with 1 level by default
+                att.Attribute1Val++;
+                att.Attribute2Val++;
+                att.Attribute3Val++;
 
 
 
             }
 
-
+            return list;
 
 
         }

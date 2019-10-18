@@ -96,24 +96,33 @@ namespace V20_RandomCharGen
             {
                 bool flag = false;
                 int curPoints = att.currentPoints;
- 
+                Random random = new Random();
                 while (!flag)
                 {
+                    int r = random.Next(1, 4);
 
-                    int r1 = randAttribute.Next(0, att.maximum); 
+                    switch (r)
+                    {
+                        case 1:
+                    int r1 = randAttribute.Next(0, att.maximum);
                     r1 = Limit(r1, 0, curPoints);
-                    att.Attribute1Val =  Limit(r1 + att.Attribute1Val, 0, att.maximum);
+                    att.Attribute1Val = Limit(r1 + att.Attribute1Val, 0, att.maximum);
                     curPoints -= r1;
-
+                            break;
+                        case 2:
                     int r2 = randAttribute.Next(0, att.maximum);
                     r2 = Limit(r2, 0, curPoints);
                     att.Attribute2Val = Limit(r2 + att.Attribute2Val, 0, att.maximum); ;
                     curPoints -= r2;
-                    
+                            break;
+
+                        case 3:
                     int r3 = randAttribute.Next(0, att.maximum);
                     r3 = Limit(r3, 0, curPoints);
                     att.Attribute3Val = Limit(r3 + att.Attribute3Val, 0, att.maximum);
                     curPoints -= r3;
+                            break;
+                    }
                     flag = (curPoints <= 0);
 
 
@@ -154,59 +163,84 @@ namespace V20_RandomCharGen
             {
                 bool flag = false;
                 int curPoints = ab.currentPoints;
-
+                Random random = new Random();
                 while (!flag)
                 {
+                    int r = random.Next(1, 11);
 
+                    switch (r)
+                    {
+
+                    case 1:
                     int r1 = randAttribute.Next(0, ab.maximum);
                     r1 = Limit(r1, 0, curPoints);
                     ab.Ability1Val = Limit(r1 + ab.Ability1Val, 0, ab.maximum);
                     curPoints -= r1;
+                    break;
 
+                    case 2:
                     int r2 = randAttribute.Next(0, ab.maximum);
                     r2 = Limit(r2, 0, curPoints);
                     ab.Ability2Val = Limit(r2 + ab.Ability2Val, 0, ab.maximum); ;
                     curPoints -= r2;
+                    break;
 
+                    case 3:
                     int r3 = randAttribute.Next(0, ab.maximum);
                     r3 = Limit(r3, 0, curPoints);
                     ab.Ability3Val = Limit(r3 + ab.Ability3Val, 0, ab.maximum);
                     curPoints -= r3;
+                    break;
 
+                    case 4:
                     int r4 = randAttribute.Next(0, ab.maximum);
                     r4 = Limit(r4, 0, curPoints);
                     ab.Ability4Val = Limit(r4 + ab.Ability4Val, 0, ab.maximum);
                     curPoints -= r4;
+                    break;
 
+                    case 5:
                     int r5 = randAttribute.Next(0, ab.maximum);
                     r5 = Limit(r5, 0, curPoints);
                     ab.Ability5Val = Limit(r5 + ab.Ability5Val, 0, ab.maximum);
                     curPoints -= r5;
+                    break;
 
+                    case 6:
                     int r6 = randAttribute.Next(0, ab.maximum);
                     r6 = Limit(r6, 0, curPoints);
                     ab.Ability6Val = Limit(r6 + ab.Ability6Val, 0, ab.maximum);
                     curPoints -= r6;
+                    break;
 
+                    case 7:
                     int r7 = randAttribute.Next(0, ab.maximum);
                     r7 = Limit(r7, 0, curPoints);
                     ab.Ability7Val = Limit(r7 + ab.Ability7Val, 0, ab.maximum);
                     curPoints -= r7;
+                    break;
 
+                    case 8:
                     int r8 = randAttribute.Next(0, ab.maximum);
                     r8 = Limit(r8, 0, curPoints);
                     ab.Ability8Val = Limit(r8 + ab.Ability8Val, 0, ab.maximum);
                     curPoints -= r8;
+                    break;
 
+                    case 9:
                     int r9 = randAttribute.Next(0, ab.maximum);
                     r9 = Limit(r9, 0, curPoints);
                     ab.Ability9Val = Limit(r9 + ab.Ability9Val, 0, ab.maximum);
                     curPoints -= r9;
+                    break;
 
+                    case 10:
                     int r10 = randAttribute.Next(0, ab.maximum);
                     r10 = Limit(r10, 0, curPoints);
                     ab.Ability10Val = Limit(r10 + ab.Ability10Val, 0, ab.maximum);
                     curPoints -= r10;
+                    break;
+                }
                     flag = (curPoints <= 0);
 
 

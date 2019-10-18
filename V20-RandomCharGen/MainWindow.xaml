@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:V20_RandomCharGen"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024">
-    <Grid>
+    <Grid RenderTransformOrigin="0.0,0.0">
         <TextBox x:Name="textbox1" HorizontalAlignment="Left" Height="23" Margin="160,37,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
         <TextBox x:Name="textbox2" HorizontalAlignment="Left" Height="23" Margin="160,79,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
         <TextBox x:Name="textbox3" HorizontalAlignment="Left" Height="23" Margin="160,125,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
@@ -25,7 +25,67 @@
         <TextBlock HorizontalAlignment="Left" Margin="401,42,0,0" TextWrapping="Wrap" Text="Perception" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="401,84,0,0" TextWrapping="Wrap" Text="Intelligence" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="401,125,0,0" TextWrapping="Wrap" Text="Wits" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="218,216,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="770,252,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <TextBox x:Name="textbox10" HorizontalAlignment="Left" Height="23" Margin="181,247,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,252,0,0" TextWrapping="Wrap" Text="Alertness" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox11" HorizontalAlignment="Left" Height="23" Margin="181,275,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,280,0,0" TextWrapping="Wrap" Text="Athletics" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox12" HorizontalAlignment="Left" Height="23" Margin="181,304,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,309,0,0" TextWrapping="Wrap" Text="Awareness" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox13" HorizontalAlignment="Left" Height="23" Margin="181,333,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,338,0,0" TextWrapping="Wrap" Text="Brawl" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox14" HorizontalAlignment="Left" Height="23" Margin="181,362,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,367,0,0" TextWrapping="Wrap" Text="Empathy" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox15" HorizontalAlignment="Left" Height="23" Margin="181,388,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,393,0,0" TextWrapping="Wrap" Text="Expression" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox16" HorizontalAlignment="Left" Height="23" Margin="181,414,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,419,0,0" TextWrapping="Wrap" Text="Intimidation" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox17" HorizontalAlignment="Left" Height="23" Margin="181,441,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,446,0,0" TextWrapping="Wrap" Text="Leadership" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox18" HorizontalAlignment="Left" Height="23" Margin="181,469,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,474,0,0" TextWrapping="Wrap" Text="Streetwise" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox19" HorizontalAlignment="Left" Height="23" Margin="181,498,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,503,0,0" TextWrapping="Wrap" Text="Subterfuge" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox20" HorizontalAlignment="Left" Height="23" Margin="370,247,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,252,0,0" TextWrapping="Wrap" Text="Animal ken" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox21" HorizontalAlignment="Left" Height="23" Margin="370,275,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,280,0,0" TextWrapping="Wrap" Text="crafts" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox22" HorizontalAlignment="Left" Height="23" Margin="370,304,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,309,0,0" TextWrapping="Wrap" Text="drive" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox23" HorizontalAlignment="Left" Height="23" Margin="370,333,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,338,0,0" TextWrapping="Wrap" Text="Etiquette" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox24" HorizontalAlignment="Left" Height="23" Margin="370,362,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,367,0,0" TextWrapping="Wrap" Text="firearms" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox25" HorizontalAlignment="Left" Height="23" Margin="370,388,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,393,0,0" TextWrapping="Wrap" Text="larceny" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox26" HorizontalAlignment="Left" Height="23" Margin="370,414,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,419,0,0" TextWrapping="Wrap" Text="Melee" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox27" HorizontalAlignment="Left" Height="23" Margin="370,441,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,446,0,0" TextWrapping="Wrap" Text="performance" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox28" HorizontalAlignment="Left" Height="23" Margin="370,469,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,474,0,0" TextWrapping="Wrap" Text="stealth" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox29" HorizontalAlignment="Left" Height="23" Margin="370,498,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="266,503,0,0" TextWrapping="Wrap" Text="survival" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox30" HorizontalAlignment="Left" Height="23" Margin="566,247,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"><Run Text="A"/><Run Text="cademics"/></TextBlock>
+        <TextBox x:Name="textbox31" HorizontalAlignment="Left" Height="23" Margin="566,275,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,280,0,0" TextWrapping="Wrap" Text="computer" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox32" HorizontalAlignment="Left" Height="23" Margin="566,304,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,309,0,0" TextWrapping="Wrap" Text="finance" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox33" HorizontalAlignment="Left" Height="23" Margin="566,333,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,338,0,0" TextWrapping="Wrap" Text="investigation" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox34" HorizontalAlignment="Left" Height="23" Margin="566,362,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,367,0,0" TextWrapping="Wrap" Text="law" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox35" HorizontalAlignment="Left" Height="23" Margin="566,388,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,393,0,0" TextWrapping="Wrap" Text="medicine" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox36" HorizontalAlignment="Left" Height="23" Margin="566,414,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,419,0,0" TextWrapping="Wrap" Text="occult" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox37" HorizontalAlignment="Left" Height="23" Margin="566,441,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,446,0,0" TextWrapping="Wrap" Text="politics" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox38" HorizontalAlignment="Left" Height="23" Margin="566,469,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,474,0,0" TextWrapping="Wrap" Text="science" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
+        <TextBox x:Name="textbox39" HorizontalAlignment="Left" Height="23" Margin="566,498,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="21"/>
+        <TextBlock HorizontalAlignment="Left" Margin="462,503,0,0" TextWrapping="Wrap" Text="technology" VerticalAlignment="Top" FontFamily="Algerian" FontSize="14"/>
 
     </Grid>
 </Window>

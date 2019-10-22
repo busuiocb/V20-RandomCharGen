@@ -30,11 +30,14 @@ namespace V20_RandomCharGen
         }
 
         //Generate random character
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void Button1_Click(object sender, RoutedEventArgs e)
         {
             Character ion = new Character();
             List<Character.AttributeGroup> rollAttributes = ion.GenerateAttributes();
             List<Character.AbilityGroup> rollAbilities = ion.GenerateAbilities();
+            Character.DisciplineGroup rollDisciplines = ion.GenerateDisciplines();
+            Character.BackgroundGroup rollBackgrounds = ion.GenerateBackgrounds();
+            Character.VirtueGroup rollVirtues = ion.GenerateVirtues();
 
             //Write Values to Physical Attributes
             textbox1.Text = rollAttributes[0].Attribute1Val.ToString();
@@ -88,8 +91,39 @@ namespace V20_RandomCharGen
             textbox38.Text = rollAbilities[2].Ability9Val.ToString();
             textbox39.Text = rollAbilities[2].Ability10Val.ToString();
 
+            //Write Values to Disciplines
+            textbox40.Text = rollDisciplines.Discipline1Val.ToString();
+            textbox41.Text = rollDisciplines.Discipline2Val.ToString();
+            textbox42.Text = rollDisciplines.Discipline3Val.ToString();
 
 
+            //Write Values to Backgrounds
+            textbox43.Text = rollBackgrounds.Background1Val.ToString();
+            textbox44.Text = rollBackgrounds.Background2Val.ToString();
+            textbox45.Text = rollBackgrounds.Background3Val.ToString();
+            textbox46.Text = rollBackgrounds.Background4Val.ToString();
+            textbox47.Text = rollBackgrounds.Background5Val.ToString();
+            textbox48.Text = rollBackgrounds.Background6Val.ToString();
+            textbox49.Text = rollBackgrounds.Background7Val.ToString();
+            textbox50.Text = rollBackgrounds.Background8Val.ToString();
+            textbox51.Text = rollBackgrounds.Background9Val.ToString();
+            textbox52.Text = rollBackgrounds.Background10Val.ToString();
+            textbox53.Text = rollBackgrounds.Background11Val.ToString();
+            textbox54.Text = rollBackgrounds.Background12Val.ToString();
+            textbox55.Text = rollBackgrounds.Background13Val.ToString();
+
+
+            //Write Values to Virtues
+            textbox56.Text = rollVirtues.Virtue1Val.ToString();
+            textbox57.Text = rollVirtues.Virtue2Val.ToString();
+            textbox58.Text = rollVirtues.Virtue3Val.ToString();
+
+
+            //Calculate Humanity
+            textbox59.Text = (Int32.Parse(textbox56.Text) + Int32.Parse(textbox57.Text)).ToString();
+
+            //Calculate Willpower
+            textbox60.Text = textbox58.Text;
 
         }
     }

@@ -22,11 +22,7 @@ namespace V20_RandomCharGen
     {
         public MainWindow()
         {
-            InitializeComponent();
-
-
-          
-
+            InitializeComponent();       
         }
 
         //Generate random character
@@ -38,12 +34,12 @@ namespace V20_RandomCharGen
             Character.DisciplineGroup rollDisciplines = ion.GenerateDisciplines();
             Character.BackgroundGroup rollBackgrounds = ion.GenerateBackgrounds();
             Character.VirtueGroup rollVirtues = ion.GenerateVirtues();
-
+            
             //Write Values to Physical Attributes
             textbox1.Text = rollAttributes[0].Attribute1Val.ToString();
             textbox2.Text = rollAttributes[0].Attribute2Val.ToString();
             textbox3.Text = rollAttributes[0].Attribute3Val.ToString();
-
+            
             //Write Values to Social Attributes
             textbox4.Text = rollAttributes[1].Attribute1Val.ToString();
             textbox5.Text = rollAttributes[1].Attribute2Val.ToString();

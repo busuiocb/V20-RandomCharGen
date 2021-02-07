@@ -77,7 +77,12 @@ namespace V20_RandomCharGen
         readonly List<AttributeGroup> AttributeGroupArray = new List<AttributeGroup>();
         readonly List<AttributeGroup> AttributeList = new List<AttributeGroup>();
         private readonly Random randNumber = new Random();
-
+        struct RandValues 
+        {
+            public int value;
+            public int currPoints;
+        
+        }
         //Ability Variables
         readonly AbilityGroup talents = new AbilityGroup();
         readonly AbilityGroup skills = new AbilityGroup();
@@ -85,19 +90,20 @@ namespace V20_RandomCharGen
         readonly List<int> AbilityGroupValuesArray = new List<int>(new int[] { 13, 9, 5 });
         readonly List<AbilityGroup> AbilityGroupArray = new List<AbilityGroup>();
         readonly List<AbilityGroup> AbilityList = new List<AbilityGroup>();
-     
+
 
         //Discipline Variables
         readonly DisciplineGroup clanDisciplines = new DisciplineGroup();
-      
+
 
         //Backgrounds Variables
         readonly BackgroundGroup backgrounds = new BackgroundGroup();
-    
+
 
         //Virtues Variables
         readonly VirtueGroup virtues = new VirtueGroup();
-      
+
+        private RandValues TempVar;
 
         public Character()
         {
@@ -120,6 +126,27 @@ namespace V20_RandomCharGen
             return value;
         }
 
+        private RandValues GenerateRandomValue(int val, int rand, int max, int currentPoints)
+        {
+            RandValues returnValues = new RandValues();
+            if (val + rand > max)
+            {
+                if (val != max)
+                {
+                    currentPoints += val - max;
+                    val += (max - val);
+                }
+            }
+            else
+            {
+                val = rand + val;
+                currentPoints -= rand;
+            }
+            returnValues.value = val;
+            returnValues.currPoints = currentPoints;
+            return returnValues;
+        }
+
         //Generate random attributes
         public List<AttributeGroup> GenerateAttributes()
         {
@@ -138,35 +165,52 @@ namespace V20_RandomCharGen
             }
 
             //Generate a random value for each attribute based on the priority assigned previously
-            foreach (AttributeGroup att in AttributeList) 
+            foreach (AttributeGroup att in AttributeList)
             {
                 bool flag = false;
-                int curPoints = att.currentPoints;     
+                int curPoints = att.currentPoints;
                 while (!flag)
                 {
-                    int r = randNumber.Next(0, 4);
+                    int r = randNumber.Next(1, 4);
 
                     switch (r)
                     {
                         case 1:
-                    int r1 = randNumber.Next(0, att.maximum);
-                    r1 = Limit(r1, 0, curPoints);
-                    att.Attribute1Val = Limit(r1 + att.Attribute1Val, 0, att.maximum);
-                    curPoints -= r1;
+                            //int r1 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(att.Attribute1Val, r1, att.maximum, curPoints);
+                            //att.Attribute1Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (att.Attribute1Val < att.maximum)
+                            {
+                                att.Attribute1Val += 1;
+                                curPoints -= 1;
+                            }
                             break;
+
                         case 2:
-                    int r2 = randNumber.Next(0, att.maximum);
-                    r2 = Limit(r2, 0, curPoints);
-                    att.Attribute2Val = Limit(r2 + att.Attribute2Val, 0, att.maximum); 
-                    curPoints -= r2;
+                            //int r2 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(att.Attribute2Val, r2, att.maximum, curPoints);
+                            //att.Attribute2Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (att.Attribute2Val < att.maximum)
+                            {
+                                att.Attribute2Val += 1;
+                                curPoints -= 1;
+                            }
                             break;
 
                         case 3:
-                    int r3 = randNumber.Next(0, att.maximum);
-                    r3 = Limit(r3, 0, curPoints);
-                    att.Attribute3Val = Limit(r3 + att.Attribute3Val, 0, att.maximum);
-                    curPoints -= r3;
+                            //int r3 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(att.Attribute3Val, r3, att.maximum, curPoints);
+                            //att.Attribute3Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (att.Attribute3Val < att.maximum)
+                            {
+                                att.Attribute3Val += 1;
+                                curPoints -= 1;
+                            }
                             break;
+
                     }
                     flag = (curPoints <= 0);
 
@@ -186,6 +230,7 @@ namespace V20_RandomCharGen
 
 
         }
+
         //Generate random abilities
         public List<AbilityGroup> GenerateAbilities()
         {
@@ -210,80 +255,131 @@ namespace V20_RandomCharGen
                 int curPoints = ab.currentPoints;
                 while (!flag)
                 {
-                    int r = randNumber.Next(0, 11);
+                    int r = randNumber.Next(1, 11);
 
                     switch (r)
                     {
 
                     case 1:
-                    int r1 = randNumber.Next(0, ab.maximum);
-                    r1 = Limit(r1, 0, curPoints);
-                    ab.Ability1Val = Limit(r1 + ab.Ability1Val, 0, ab.maximum);
-                    curPoints -= r1;
-                    break;
+                            //int r1 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability1Val, r1, ab.maximum, curPoints);
+                            //ab.Ability1Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability1Val < ab.maximum) 
+                            {
+                                ab.Ability1Val += 1;
+                                curPoints -= 1;
+                            }
+
+                            break;
 
                     case 2:
-                    int r2 = randNumber.Next(0, ab.maximum);
-                    r2 = Limit(r2, 0, curPoints);
-                    ab.Ability2Val = Limit(r2 + ab.Ability2Val, 0, ab.maximum);
-                    curPoints -= r2;
-                    break;
+                            //int r2 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability2Val, r2, ab.maximum, curPoints);
+                            //ab.Ability2Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability2Val < ab.maximum)
+                            {
+                                ab.Ability2Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 3:
-                    int r3 = randNumber.Next(0, ab.maximum);
-                    r3 = Limit(r3, 0, curPoints);
-                    ab.Ability3Val = Limit(r3 + ab.Ability3Val, 0, ab.maximum);
-                    curPoints -= r3;
-                    break;
+                            //int r3 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability3Val, r3, ab.maximum, curPoints);
+                            //ab.Ability3Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability3Val < ab.maximum)
+                            {
+                                ab.Ability3Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 4:
-                    int r4 = randNumber.Next(0, ab.maximum);
-                    r4 = Limit(r4, 0, curPoints);
-                    ab.Ability4Val = Limit(r4 + ab.Ability4Val, 0, ab.maximum);
-                    curPoints -= r4;
-                    break;
+                            //int r4 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability4Val, r4, ab.maximum, curPoints);
+                            //ab.Ability4Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability4Val < ab.maximum)
+                            {
+                                ab.Ability4Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 5:
-                    int r5 = randNumber.Next(0, ab.maximum);
-                    r5 = Limit(r5, 0, curPoints);
-                    ab.Ability5Val = Limit(r5 + ab.Ability5Val, 0, ab.maximum);
-                    curPoints -= r5;
-                    break;
+                            //int r5 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability5Val, r5, ab.maximum, curPoints);
+                            //ab.Ability5Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability5Val < ab.maximum)
+                            {
+                                ab.Ability5Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 6:
-                    int r6 = randNumber.Next(0, ab.maximum);
-                    r6 = Limit(r6, 0, curPoints);
-                    ab.Ability6Val = Limit(r6 + ab.Ability6Val, 0, ab.maximum);
-                    curPoints -= r6;
-                    break;
+                            //int r6 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability6Val, r6, ab.maximum, curPoints);
+                            //ab.Ability6Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability6Val < ab.maximum)
+                            {
+                                ab.Ability6Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 7:
-                    int r7 = randNumber.Next(0, ab.maximum);
-                    r7 = Limit(r7, 0, curPoints);
-                    ab.Ability7Val = Limit(r7 + ab.Ability7Val, 0, ab.maximum);
-                    curPoints -= r7;
-                    break;
+                            //int r7 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability7Val, r7, ab.maximum, curPoints);
+                            //ab.Ability7Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability7Val < ab.maximum)
+                            {
+                                ab.Ability7Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 8:
-                    int r8 = randNumber.Next(0, ab.maximum);
-                    r8 = Limit(r8, 0, curPoints);
-                    ab.Ability8Val = Limit(r8 + ab.Ability8Val, 0, ab.maximum);
-                    curPoints -= r8;
-                    break;
+                            //int r8 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability8Val, r8, ab.maximum, curPoints);
+                            //ab.Ability8Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability8Val < ab.maximum)
+                            {
+                                ab.Ability8Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 9:
-                    int r9 = randNumber.Next(0, ab.maximum);
-                    r9 = Limit(r9, 0, curPoints);
-                    ab.Ability9Val = Limit(r9 + ab.Ability9Val, 0, ab.maximum);
-                    curPoints -= r9;
-                    break;
+                            //int r9 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability9Val, r9, ab.maximum, curPoints);
+                            //ab.Ability9Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability9Val < ab.maximum)
+                            {
+                                ab.Ability9Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
 
                     case 10:
-                    int r10 = randNumber.Next(0, ab.maximum);
-                    r10 = Limit(r10, 0, curPoints);
-                    ab.Ability10Val = Limit(r10 + ab.Ability10Val, 0, ab.maximum);
-                    curPoints -= r10;
-                    break;
+                            //int r10 = randNumber.Next(0, curPoints + 1);
+                            //TempVar = GenerateRandomValue(ab.Ability10Val, r10, ab.maximum, curPoints);
+                            //ab.Ability10Val = TempVar.value;
+                            //curPoints = TempVar.currPoints;
+                            if (ab.Ability10Val < ab.maximum)
+                            {
+                                ab.Ability10Val += 1;
+                                curPoints -= 1;
+                            }
+                            break;
                 }
                     flag = (curPoints <= 0);
 
@@ -312,41 +408,54 @@ namespace V20_RandomCharGen
                 switch (r)
                 {
                     case 1:
-                        int r1 = randNumber.Next(0, clanDisciplines.maximum);
-                        r1 = Limit(r1, 0, curPoints);
-                        remainder = 0;
-                        if (r1 + clanDisciplines.Discipline1Val > clanDisciplines.maximum)
+                        //int r1 = randNumber.Next(0, clanDisciplines.maximum + 1);
+                        //r1 = Limit(r1, 0, curPoints);
+                        //remainder = 0;
+                        //if (r1 + clanDisciplines.Discipline1Val > clanDisciplines.maximum)
+                        //{
+                        //    remainder = (r1 + clanDisciplines.Discipline1Val) - clanDisciplines.maximum;
+                        //}
+                        //clanDisciplines.Discipline1Val = Limit(r1 + clanDisciplines.Discipline1Val, 0, clanDisciplines.maximum);
+                        //curPoints = (curPoints - r1) + remainder;
+                        if (clanDisciplines.Discipline1Val < clanDisciplines.maximum)
                         {
-                            remainder = (r1 + clanDisciplines.Discipline1Val) - clanDisciplines.maximum;
+                            clanDisciplines.Discipline1Val += 1;
+                            curPoints -= 1;
                         }
-                        clanDisciplines.Discipline1Val = Limit(r1 + clanDisciplines.Discipline1Val, 0, clanDisciplines.maximum);
-                        curPoints = (curPoints - r1) + remainder;
-                        
+
                         break;
                     case 2:
-                        int r2 = randNumber.Next(0, clanDisciplines.maximum);
-                        r2 = Limit(r2, 0, curPoints);
-                        remainder = 0;
-                        if (r2 + clanDisciplines.Discipline2Val > clanDisciplines.maximum)
+                        //int r2 = randNumber.Next(0, clanDisciplines.maximum + 1);
+                        //r2 = Limit(r2, 0, curPoints);
+                        //remainder = 0;
+                        //if (r2 + clanDisciplines.Discipline2Val > clanDisciplines.maximum)
+                        //{
+                        //    remainder = (r2 + clanDisciplines.Discipline2Val) - clanDisciplines.maximum;
+                        //}
+                        //clanDisciplines.Discipline2Val = Limit(r2 + clanDisciplines.Discipline2Val, 0, clanDisciplines.maximum);
+                        //curPoints = (curPoints - r2) + remainder;
+                        if (clanDisciplines.Discipline2Val < clanDisciplines.maximum)
                         {
-                            remainder = (r2 + clanDisciplines.Discipline2Val) - clanDisciplines.maximum;
+                            clanDisciplines.Discipline2Val += 1;
+                            curPoints -= 1;
                         }
-                        clanDisciplines.Discipline2Val = Limit(r2 + clanDisciplines.Discipline2Val, 0, clanDisciplines.maximum);
-                        curPoints = (curPoints - r2) + remainder;
-                        
                         break;
 
                     case 3:
-                        int r3 = randNumber.Next(0, clanDisciplines.maximum);
-                        r3 = Limit(r3, 0, curPoints);
-                        remainder = 0;
-                        if (r3 + clanDisciplines.Discipline3Val > clanDisciplines.maximum)
+                        //int r3 = randNumber.Next(0, clanDisciplines.maximum + 1);
+                        //r3 = Limit(r3, 0, curPoints);
+                        //remainder = 0;
+                        //if (r3 + clanDisciplines.Discipline3Val > clanDisciplines.maximum)
+                        //{
+                        //    remainder = (r3 + clanDisciplines.Discipline3Val) - clanDisciplines.maximum;
+                        //}
+                        //clanDisciplines.Discipline3Val = Limit(r3 + clanDisciplines.Discipline3Val, 0, clanDisciplines.maximum);
+                        //curPoints = (curPoints - r3) + remainder;
+                        if (clanDisciplines.Discipline3Val < clanDisciplines.maximum)
                         {
-                            remainder = (r3 + clanDisciplines.Discipline3Val) - clanDisciplines.maximum;
+                            clanDisciplines.Discipline3Val += 1;
+                            curPoints -= 1;
                         }
-                        clanDisciplines.Discipline3Val = Limit(r3 + clanDisciplines.Discipline3Val, 0, clanDisciplines.maximum);
-                        curPoints = (curPoints - r3) + remainder;
-                        
                         break;
                 }
                 flag = (curPoints <= 0);
@@ -363,99 +472,164 @@ namespace V20_RandomCharGen
             int curPoints = backgrounds.currentPoints;
             while (!flag)
             {
-                int r = randNumber.Next(0, 14);
+                int r = randNumber.Next(1, 14);
 
                 switch (r)
                 {
                     case 1:
-                        int r1 = randNumber.Next(0, backgrounds.maximum);
-                        r1 = Limit(r1, 0, curPoints);
-                        backgrounds.Background1Val = Limit(r1 + backgrounds.Background1Val, 0, backgrounds.maximum);
-                        curPoints -= r1;
+                        //int r1 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r1 = Limit(r1, 0, curPoints);
+                        //backgrounds.Background1Val = Limit(r1 + backgrounds.Background1Val, 0, backgrounds.maximum);
+                        //curPoints -= r1;
+                        if (backgrounds.Background1Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background1Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 2:
-                        int r2 = randNumber.Next(0, backgrounds.maximum);
-                        r2 = Limit(r2, 0, curPoints);
-                        backgrounds.Background2Val = Limit(r2 + backgrounds.Background2Val, 0, backgrounds.maximum);
-                        curPoints -= r2;
+                        //int r2 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r2 = Limit(r2, 0, curPoints);
+                        //backgrounds.Background2Val = Limit(r2 + backgrounds.Background2Val, 0, backgrounds.maximum);
+                        //curPoints -= r2;
+                        if (backgrounds.Background2Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background2Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 3:
-                        int r3 = randNumber.Next(0, clanDisciplines.maximum);
-                        r3 = Limit(r3, 0, curPoints);
-                        backgrounds.Background3Val = Limit(r3 + backgrounds.Background3Val, 0, backgrounds.maximum);
-                        curPoints -= r3;
+                        //int r3 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r3 = Limit(r3, 0, curPoints);
+                        //backgrounds.Background3Val = Limit(r3 + backgrounds.Background3Val, 0, backgrounds.maximum);
+                        //curPoints -= r3;
+                        if (backgrounds.Background3Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background3Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 4:
-                        int r4 = randNumber.Next(0, clanDisciplines.maximum);
-                        r4 = Limit(r4, 0, curPoints);
-                        backgrounds.Background4Val = Limit(r4 + backgrounds.Background4Val, 0, backgrounds.maximum);
-                        curPoints -= r4;
+                        //int r4 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r4 = Limit(r4, 0, curPoints);
+                        //backgrounds.Background4Val = Limit(r4 + backgrounds.Background4Val, 0, backgrounds.maximum);
+                        //curPoints -= r4;
+                        if (backgrounds.Background4Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background4Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 5:
-                        int r5 = randNumber.Next(0, clanDisciplines.maximum);
-                        r5 = Limit(r5, 0, curPoints);
-                        backgrounds.Background5Val = Limit(r5 + backgrounds.Background5Val, 0, backgrounds.maximum);
-                        curPoints -= r5;
+                        //int r5 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r5 = Limit(r5, 0, curPoints);
+                        //backgrounds.Background5Val = Limit(r5 + backgrounds.Background5Val, 0, backgrounds.maximum);
+                        //curPoints -= r5;
+                        if (backgrounds.Background5Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background5Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 6:
-                        int r6 = randNumber.Next(0, clanDisciplines.maximum);
-                        r6 = Limit(r6, 0, curPoints);
-                        backgrounds.Background6Val = Limit(r6 + backgrounds.Background6Val, 0, backgrounds.maximum);
-                        curPoints -= r6;
+                        //int r6 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r6 = Limit(r6, 0, curPoints);
+                        //backgrounds.Background6Val = Limit(r6 + backgrounds.Background6Val, 0, backgrounds.maximum);
+                        //curPoints -= r6;
+                        if (backgrounds.Background6Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background6Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 7:
-                        int r7 = randNumber.Next(0, clanDisciplines.maximum);
-                        r7 = Limit(r7, 0, curPoints);
-                        backgrounds.Background7Val = Limit(r7 + backgrounds.Background7Val, 0, backgrounds.maximum);
-                        curPoints -= r7;
+                        //int r7 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r7 = Limit(r7, 0, curPoints);
+                        //backgrounds.Background7Val = Limit(r7 + backgrounds.Background7Val, 0, backgrounds.maximum);
+                        //curPoints -= r7;
+                        if (backgrounds.Background7Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background7Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 8:
-                        int r8 = randNumber.Next(0, clanDisciplines.maximum);
-                        r8 = Limit(r8, 0, curPoints);
-                        backgrounds.Background8Val = Limit(r8 + backgrounds.Background8Val, 0, backgrounds.maximum);
-                        curPoints -= r8;
+                        //int r8 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r8 = Limit(r8, 0, curPoints);
+                        //backgrounds.Background8Val = Limit(r8 + backgrounds.Background8Val, 0, backgrounds.maximum);
+                        //curPoints -= r8;
+                        if (backgrounds.Background8Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background8Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 9:
-                        int r9 = randNumber.Next(0, clanDisciplines.maximum);
-                        r9 = Limit(r9, 0, curPoints);
-                        backgrounds.Background9Val = Limit(r9 + backgrounds.Background9Val, 0, backgrounds.maximum);
-                        curPoints -= r9;
+                        //int r9 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r9 = Limit(r9, 0, curPoints);
+                        //backgrounds.Background9Val = Limit(r9 + backgrounds.Background9Val, 0, backgrounds.maximum);
+                        //curPoints -= r9;
+                        if (backgrounds.Background9Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background9Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 10:
-                        int r10 = randNumber.Next(0, clanDisciplines.maximum);
-                        r10 = Limit(r10, 0, curPoints);
-                        backgrounds.Background10Val = Limit(r10 + backgrounds.Background10Val, 0, backgrounds.maximum);
-                        curPoints -= r10;
+                        //int r10 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r10 = Limit(r10, 0, curPoints);
+                        //backgrounds.Background10Val = Limit(r10 + backgrounds.Background10Val, 0, backgrounds.maximum);
+                        //curPoints -= r10;
+                        if (backgrounds.Background10Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background10Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 11:
-                        int r11 = randNumber.Next(0, clanDisciplines.maximum);
-                        r11 = Limit(r11, 0, curPoints);
-                        backgrounds.Background11Val = Limit(r11 + backgrounds.Background11Val, 0, backgrounds.maximum);
-                        curPoints -= r11;
+                        //int r11 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r11 = Limit(r11, 0, curPoints);
+                        //backgrounds.Background11Val = Limit(r11 + backgrounds.Background11Val, 0, backgrounds.maximum);
+                        //curPoints -= r11;
+                        if (backgrounds.Background11Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background11Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 12:
-                        int r12 = randNumber.Next(0, clanDisciplines.maximum);
-                        r12 = Limit(r12, 0, curPoints);
-                        backgrounds.Background12Val = Limit(r12 + backgrounds.Background12Val, 0, backgrounds.maximum);
-                        curPoints -= r12;
+                        //int r12 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r12 = Limit(r12, 0, curPoints);
+                        //backgrounds.Background12Val = Limit(r12 + backgrounds.Background12Val, 0, backgrounds.maximum);
+                        //curPoints -= r12;
+                        if (backgrounds.Background12Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background12Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
                     case 13:
-                        int r13 = randNumber.Next(0, clanDisciplines.maximum);
-                        r13 = Limit(r13, 0, curPoints);
-                        backgrounds.Background13Val = Limit(r13 + backgrounds.Background13Val, 0, backgrounds.maximum);
-                        curPoints -= r13;
+                        //int r13 = randNumber.Next(0, backgrounds.maximum + 1);
+                        //r13 = Limit(r13, 0, curPoints);
+                        //backgrounds.Background13Val = Limit(r13 + backgrounds.Background13Val, 0, backgrounds.maximum);
+                        //curPoints -= r13;
+                        if (backgrounds.Background13Val < backgrounds.maximum)
+                        {
+                            backgrounds.Background13Val += 1;
+                            curPoints -= 1;
+                        }
                         break;
 
 
@@ -478,41 +652,53 @@ namespace V20_RandomCharGen
                 switch (r)
                 {
                     case 1:
-                        int r1 = randNumber.Next(0, virtues.maximum);
-                        r1 = Limit(r1, 0, curPoints);
-                        remainder = 0;
-                        if (r1 + virtues.Virtue1Val > virtues.maximum)
+                        //int r1 = randNumber.Next(0, virtues.maximum + 1);
+                        //r1 = Limit(r1, 0, curPoints);
+                        //remainder = 0;
+                        //if (r1 + virtues.Virtue1Val > virtues.maximum)
+                        //{
+                        //    remainder = (r1 + virtues.Virtue1Val) - virtues.maximum;
+                        //}
+                        //virtues.Virtue1Val = Limit(r1 + virtues.Virtue1Val, 0, virtues.maximum);
+                        //curPoints = (curPoints - r1) + remainder;
+                        if (virtues.Virtue1Val < virtues.maximum)
                         {
-                            remainder = (r1 + virtues.Virtue1Val) - virtues.maximum;
+                            virtues.Virtue1Val += 1;
+                            curPoints -= 1;
                         }
-                        virtues.Virtue1Val = Limit(r1 + virtues.Virtue1Val, 0, virtues.maximum);
-                        curPoints = (curPoints - r1) + remainder;
-                        
                         break;
                     case 2:
-                        int r2 = randNumber.Next(0, virtues.maximum);
-                        r2 = Limit(r2, 0, curPoints);
-                        remainder = 0;
-                        if (r2 + virtues.Virtue2Val > virtues.maximum)
+                        //int r2 = randNumber.Next(0, virtues.maximum + 1);
+                        //r2 = Limit(r2, 0, curPoints);
+                        //remainder = 0;
+                        //if (r2 + virtues.Virtue2Val > virtues.maximum)
+                        //{
+                        //    remainder = (r2 + virtues.Virtue2Val) - virtues.maximum;
+                        //}
+                        //virtues.Virtue2Val = Limit(r2 + virtues.Virtue2Val, 0, virtues.maximum);
+                        //curPoints = (curPoints - r2) + remainder;
+                        if (virtues.Virtue2Val < virtues.maximum)
                         {
-                            remainder = (r2 + virtues.Virtue2Val) - virtues.maximum;
+                            virtues.Virtue2Val += 1;
+                            curPoints -= 1;
                         }
-                        virtues.Virtue2Val = Limit(r2 + virtues.Virtue2Val, 0, virtues.maximum);
-                        curPoints = (curPoints - r2) + remainder;
-                        
                         break;
 
                     case 3:
-                        int r3 = randNumber.Next(0, virtues.maximum);
-                        r3 = Limit(r3, 0, curPoints);
-                        remainder = 0;
-                        if (r3 + virtues.Virtue3Val > virtues.maximum)
+                        //int r3 = randNumber.Next(0, virtues.maximum + 1);
+                        //r3 = Limit(r3, 0, curPoints);
+                        //remainder = 0;
+                        //if (r3 + virtues.Virtue3Val > virtues.maximum)
+                        //{
+                        //    remainder = (r3 + virtues.Virtue3Val) - virtues.maximum;
+                        //}
+                        //virtues.Virtue3Val = Limit(r3 + virtues.Virtue3Val, 0, virtues.maximum);
+                        //curPoints = (curPoints - r3) + remainder;
+                        if (virtues.Virtue3Val < virtues.maximum)
                         {
-                            remainder = (r3 + virtues.Virtue3Val) - virtues.maximum;
+                            virtues.Virtue3Val += 1;
+                            curPoints -= 1;
                         }
-                        virtues.Virtue3Val = Limit(r3 + virtues.Virtue3Val, 0, virtues.maximum);
-                        curPoints = (curPoints - r3) + remainder;
-                        
                         break;
                 }
                 flag = (curPoints <= 0);
